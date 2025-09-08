@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "PDF Sync Viewer",
+  "version": "1.0",
+  "description": "Synchronize PDF viewing with friends - stay on the same page together",
+  
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabs",
+    "contextMenus"
+  ],
+  
+  "background": {
+    "service_worker": "background.js"
+  },
+  
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "PDF Sync Viewer"
+  },
+  
+  "web_accessible_resources": [
+    {
+      "resources": ["sync-overlay.css"],
+      "matches": ["*://*/*"]
+    }
+  ],
+  
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
